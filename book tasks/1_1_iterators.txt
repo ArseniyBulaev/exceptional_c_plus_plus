@@ -1,0 +1,23 @@
+
+// Errors
+
+int main()
+{
+    std::vector<Date> e; // Create a vector of Date object
+    copy(istream_iterator<Date>(cin), istream_iterator<Date>(), back_inserter(e)); // Copy data from cin to vector
+    vector<Date>::iterator first = find(e.begin(), e.end(), "01/01/95"); // Get first element
+    vector<Date>::iterator last = find(e.begin(), e.end(), "12/31/95"); // Get las element
+    
+    // Error 1. If after unsuccessful search last points to e.end() , we can't assign, using it
+    *last = "12/30/95"; 
+    // Error 2, because first can point to elment after last (possibly e.end())
+    copy(first, last, ostream_iterator<Date>(cout,"\n"));
+    // Error 3. operator -- change it's operand, if e.end() return type is Date *, we can't do this,
+    // because we can't change temporary variables of built-in type in C++
+    // we can fix it like this -> e.insert(e.end() - 1, TodaysDate())
+    // but it leads to another mistake, because if container is empy,
+    // there isn't e.end() - 1 element
+    e.insert(--e.end(), TodaysDate());
+    // Error 4. Iterators first and last are invalidated because of insertion.
+    copy(first, last, ostream_iterator<Date>(cout,"\n")); 
+}
