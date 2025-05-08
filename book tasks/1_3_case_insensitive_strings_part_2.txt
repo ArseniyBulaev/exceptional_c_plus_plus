@@ -1,0 +1,25 @@
+1. Is it safe to derive ci_char_traits from char_traits<char> like this:
+    struct ci_char_traits: public char_traits<char> {...}
+Answer:
+        I think it's not, because if we use public inheritance,
+    we claim that we can use ci_char_traits where char_traits<char> expected,
+    but i think it's impossible to say that ci_char_traits will be correct in all char_traits<char> using scenarious.
+    But if we use private inheritance, we can't give user to use our overloaded methods...
+    Also we overlap char_trait<char> eq,lt,compare,find native methods and change their inner logic,
+    so if in some other methods of char_traits<char> use it, we possibly can have some problems.
+
+2. Why this causes a compilation error?
+    ci_string = "abc"
+    std::cout << ci_string << std::endl;
+Answer:
+        Because there isn't such template specialization, that supports ci_char_traits,
+    there is only the specialization for char_traits
+
+3. What you can say about this code?
+    ci_string a = "abc"
+    string b = "def"
+    string c = a + b
+Answer:
+        It will cause compilation error, because there isn't operator + for ci_string and string,
+    and ci_string can't be implicitly converted into string and vise versa
+     
