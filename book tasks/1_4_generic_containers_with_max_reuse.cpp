@@ -28,6 +28,7 @@ class fixed_vector
             std::copy(other.begin(), other.end(), begin());
             return *this;
         }
+
         fixed_vector(const fixed_vector<T, size> & other){
             operator=(other);
         }
@@ -81,4 +82,10 @@ TEST_CASE("assign operator"){
         CHECK(fv_1 == fv_2);
     }
     
+}
+
+TEST_CASE("copy constructor"){
+    fixed_vector<int, 3> fv_1 = {1, 2, 3};
+    fixed_vector fv_2(fv_1);
+    CHECK(fv_1 == fv_2);
 }
