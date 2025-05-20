@@ -28,6 +28,9 @@ class fixed_vector
             std::copy(other.begin(), other.end(), begin());
             return *this;
         }
+        fixed_vector(const fixed_vector<T, size> & other){
+            operator=(other);
+        }
         bool operator==(const fixed_vector<T, size> & other){
             for (size_t i = 0; i < size; ++i){
                 if (v_[i] != other.v_[i]) return false;
@@ -53,8 +56,8 @@ TEST_CASE("not equal operator"){
         CHECK(fv_1 != fv_2);
     }
     SUBCASE("non-empty vectors with unequal length"){
-        fixed_vector<int, 3> fv_1 = {1, 2, 3};
-        fixed_vector<int, 2> fv_2 = {4, 5};
+        // fixed_vector<int, 3> fv_1 = {1, 2, 3};
+        // fixed_vector<int, 2> fv_2 = {4, 5};
         // CHECK(fv_1 != fv_2); // compile time error
     }
 }
