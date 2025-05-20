@@ -46,11 +46,16 @@ class fixed_vector
 
 
 TEST_CASE("not equal operator"){
-    const size_t size = 3;
-    SUBCASE("non-empty vectors"){
+    SUBCASE("non-empty vectors with equal length"){
+        const size_t size = 3;
         fixed_vector<int, size> fv_1 = {1, 2, 3};
         fixed_vector<int, size> fv_2 = {4, 5, 7};
         CHECK(fv_1 != fv_2);
+    }
+    SUBCASE("non-empty vectors with unequal length"){
+        fixed_vector<int, 3> fv_1 = {1, 2, 3};
+        fixed_vector<int, 2> fv_2 = {4, 5};
+        // CHECK(fv_1 != fv_2); // compile time error
     }
 }
 
