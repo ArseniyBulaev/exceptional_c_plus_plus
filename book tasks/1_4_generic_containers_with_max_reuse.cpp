@@ -36,7 +36,7 @@ class fixed_vector
         }
 
         bool operator!=(const fixed_vector<T, size> & other){
-           return operator==(other);
+           return !operator==(other);
         }
 
     private:
@@ -44,6 +44,15 @@ class fixed_vector
 };
 
 
+
+TEST_CASE("not equal operator"){
+    const size_t size = 3;
+    SUBCASE("non-empty vectors"){
+        fixed_vector<int, size> fv_1 = {1, 2, 3};
+        fixed_vector<int, size> fv_2 = {4, 5, 7};
+        CHECK(fv_1 != fv_2);
+    }
+}
 
 
 TEST_CASE("assign operator"){
