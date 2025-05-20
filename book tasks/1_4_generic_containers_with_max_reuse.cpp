@@ -88,4 +88,6 @@ TEST_CASE("copy constructor"){
     fixed_vector<int, 3> fv_1 = {1, 2, 3};
     fixed_vector fv_2(fv_1);
     CHECK(fv_1 == fv_2);
+    *(fv_2.begin()) = 2;
+    CHECK(fv_1 != fv_2);
 }
