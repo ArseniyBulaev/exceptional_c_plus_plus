@@ -5,7 +5,7 @@
 
 /* TO DO:
 We need max reuse of copy constructor and copy operator
-1. Write copy constructor 
+1. Write copy constructor +
 2. Write copy operator + 
 */
 
