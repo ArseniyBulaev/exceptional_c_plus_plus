@@ -69,6 +69,23 @@
         "queue": "cpp",
         "random": "cpp",
         "span": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "charconv": "cpp",
+        "chrono": "cpp",
+        "condition_variable": "cpp",
+        "cstdarg": "cpp",
+        "cwctype": "cpp",
+        "forward_list": "cpp",
+        "locale": "cpp",
+        "numbers": "cpp",
+        "numeric": "cpp",
+        "optional": "cpp",
+        "semaphore": "cpp",
+        "variant": "cpp",
+        "xlocbuf": "cpp",
+        "xlocmes": "cpp",
+        "memory_resource": "cpp",
+        "stdfloat": "cpp",
+        "cinttypes": "cpp"
     }
 }
